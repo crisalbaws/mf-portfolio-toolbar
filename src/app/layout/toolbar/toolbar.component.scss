@@ -1,7 +1,10 @@
 .toolbarCustom {
     width: 100vw;
-    background-color: rgb(65 128 145);
-    max-height: 7vh;
+    background-color: rgb(255, 255, 255);
+    height: 4rem;
+    min-height: 4rem;
+    box-shadow: 0px 0px 2px 0px #0000001f;
+    padding-left: 5rem;
 }
 
 .spacer {
@@ -15,5 +18,5 @@
 }
 
 .cw {
-    color: white;
+    color: rgb(0, 0, 0);
 }
