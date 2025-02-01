@@ -20,3 +20,11 @@
 .cw {
     color: rgb(0, 0, 0);
 }
+
+@media (max-width: 768px) {
+    .toolbarCustom {
+        display: flex;
+        align-items: end;
+        flex-direction: row;
+    }
+}

@@ -6,7 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { map, Observable } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-toolbar',
   standalone: true,
@@ -16,8 +17,11 @@ import { MatMenuModule } from '@angular/material/menu';
 })
 export class ToolbarComponent {
   openedSideBar: boolean = false;
-  constructor(private router: Router) {
-   }
+  isLargeScreen$: Observable<boolean>;
+  constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
+    this.isLargeScreen$ = this.breakpointObserver.observe([Breakpoints.Large])
+      .pipe(map(result => result.matches));
+  }
   navigate(url: string) {
   }
   changePassword() {

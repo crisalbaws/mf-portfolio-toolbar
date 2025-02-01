@@ -1,6 +1,6 @@
 <mat-toolbar class="toolbarCustom" *ngIf="show()">
-    <span class="toolbar-title cw">Portafolio - Cristhian Del Castillo</span>
-    <span class="spacer"></span>
+    <span *ngIf="isLargeScreen$ | async" class="toolbar-title cw">Portafolio - Cristhian Del Castillo</span>
+    <span *ngIf="isLargeScreen$ | async" class="spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
         <mat-icon class="cw">settings</mat-icon>
     </button>
