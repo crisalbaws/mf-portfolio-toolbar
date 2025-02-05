@@ -1,17 +1,67 @@
 <mat-toolbar class="toolbarCustom" *ngIf="show()">
-    <span *ngIf="isLargeScreen$ | async" class="toolbar-title cw">Portafolio - Cristhian Del Castillo</span>
+    <span *ngIf="isLargeScreen$ | async" class="toolbar-title cw">Portafolio</span>
     <span *ngIf="isLargeScreen$ | async" class="spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
-        <mat-icon class="cw">settings</mat-icon>
-    </button>
-    <mat-menu #settingsMenu="matMenu">
-        <!-- <button mat-menu-item (click)="changePassword()">
-            <mat-icon>lock</mat-icon>
-            <span>Cambiar Contraseña</span>
-        </button> -->
-        <button mat-menu-item (click)="logout()">
-            <mat-icon class="cw">logout</mat-icon>
-            <span>Ir a landing page</span>
+
+    <ng-container *ngIf="isLargeScreen$ | async">
+        <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+            <mat-icon class="cw">settings</mat-icon>
         </button>
-    </mat-menu>
+
+
+        <mat-menu #settingsMenu="matMenu">
+            <button mat-menu-item (click)="logout()">
+                <mat-icon class="cw">logout</mat-icon>
+                <span>Ir a landing page</span>
+            </button>
+        </mat-menu>
+    </ng-container>
+
+    <ng-container *ngIf="isSmallScreen$ | async">
+        <button mat-icon-button [matMenuTriggerFor]="sideNav">
+            <mat-icon class="cw">menu</mat-icon>
+        </button>
+
+
+        <mat-menu #sideNav="matMenu">
+            <button mat-menu-item (click)="goToPWA()">
+                <mat-icon>devices</mat-icon>
+                <span class="cw">NEW!!! PWA (React)</span>
+            </button>
+
+            <button mat-menu-item routerLink="/angular/curriculum" routerLinkActive="active-link">
+                <mat-icon>description</mat-icon>
+                <span class="cw">Curriculum (Angular)</span>
+            </button>
+
+            <button mat-menu-item routerLink="/angular/to-do" routerLinkActive="active-link">
+                <mat-icon>checklist</mat-icon>
+                <span class="cw">ToDo (Angular)</span>
+            </button>
+
+            <button mat-menu-item (click)="getApp()">
+                <mat-icon>phone_iphone</mat-icon>
+                <span class="cw">App (Ionic)</span>
+            </button>
+
+            <button mat-menu-item routerLink="/react/product/list" routerLinkActive="active-link">
+                <mat-icon>shopping_bag</mat-icon>
+                <span class="cw">Store (React)</span>
+            </button>
+
+            <button mat-menu-item routerLink="/react/weather" routerLinkActive="active-link">
+                <mat-icon>cloud</mat-icon>
+                <span class="cw">Climate (React)</span>
+            </button>
+
+            <button mat-menu-item routerLink="/react/tracking" routerLinkActive="active-link">
+                <mat-icon>directions_car</mat-icon>
+                <span class="cw">Tracking (React)</span>
+            </button>
+
+            <button mat-menu-item (click)="logout()">
+                <mat-icon class="cw">logout</mat-icon>
+                <span>Ir a landing page</span>
+            </button>
+        </mat-menu>
+    </ng-container>
 </mat-toolbar>

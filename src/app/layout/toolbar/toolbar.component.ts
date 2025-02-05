@@ -18,20 +18,35 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class ToolbarComponent {
   openedSideBar: boolean = false;
   isLargeScreen$: Observable<boolean>;
+  isSmallScreen$: Observable<boolean>;
+
   constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
-    this.isLargeScreen$ = this.breakpointObserver.observe([Breakpoints.Large])
+    this.isLargeScreen$ = this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.XLarge, Breakpoints.Large])
       .pipe(map(result => result.matches));
+
+    this.isSmallScreen$ = this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small])
+      .pipe(map(result => result.matches));
+
   }
   navigate(url: string) {
   }
   changePassword() {
     this.router.navigate(['/change-password']);
-    console.log('Navegando a cambiar contraseña');
   }
   logout() {
-    this.router.navigate(['/angular/curriculum']);
+    this.router.navigate(['/login']);
   }
   show(): boolean {
-    return !this.router.url.includes('curriculum');
+    let isCV = this.router.url.includes('curriculum');
+    if (isCV) {
+      this.openedSideBar = false;
+    }
+    return !isCV;
+  }
+  goToPWA() {
+    window.open('https://crisalbaws.github.io/ticket-todo-managment/');
+  }
+  getApp() {
+    window.open('https://portfolio-caaws-public.s3.us-east-1.amazonaws.com/apps/porfolio/ionicDemo.apk');
   }
 }
