@@ -34,7 +34,7 @@ export class ToolbarComponent {
     this.router.navigate(['/change-password']);
   }
   logout() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/angular/curriculum']);
   }
   show(): boolean {
     let isCV = this.router.url.includes('curriculum');
